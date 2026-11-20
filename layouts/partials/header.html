@@ -21,7 +21,12 @@
         <div class="navbar-menu" id="navbar-menu">
             <div class="navbar-link-list">
                 {{ range .Site.Menus.main }}
-                <a href="{{ .URL }}" class="navbar-link-item">{{ index $.Site.Data.l10n .Identifier }}</a>
+                {{- $label := "" -}}
+                {{- with .Identifier -}}
+                    {{- $label = index $.Site.Data.l10n . -}}
+                {{- end -}}
+                {{- $label = $label | default .Name | default .Identifier -}}
+                <a href="{{ .URL }}" class="navbar-link-item">{{ $label }}</a>
                 {{ end }}
                 <a href="/search" class="navbar-link-item">{{ index $.Site.Data.l10n "search" }}</a>
                 {{ with site.Home.OutputFormats.Get "rss" }}
