@@ -1,0 +1,40 @@
+{{- $figRe := `<figure class="article-figure"[^>]*>\s*(<img[^>]*>)(?:\s*<figcaption>[\s\S]*?</figcaption>)?\s*</figure>` -}}
+<table
+  {{- range $k, $v := .Attributes }}
+    {{- if $v }}
+      {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+    {{- end }}
+  {{- end }}>
+  {{- if .THead }}
+  <thead>
+    {{- range .THead }}
+      <tr>
+        {{- range . }}
+          <th
+            {{- with .Alignment }}
+              {{- printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}
+            {{- end }}>
+            {{- .Text | replaceRE $figRe "$1" | safeHTML -}}
+          </th>
+        {{- end }}
+      </tr>
+    {{- end }}
+  </thead>
+  {{- end }}
+  {{- if .TBody }}
+  <tbody>
+    {{- range .TBody }}
+      <tr>
+        {{- range . }}
+          <td
+            {{- with .Alignment }}
+              {{- printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}
+            {{- end }}>
+            {{- .Text | replaceRE $figRe "$1" | safeHTML -}}
+          </td>
+        {{- end }}
+      </tr>
+    {{- end }}
+  </tbody>
+  {{- end }}
+</table>
