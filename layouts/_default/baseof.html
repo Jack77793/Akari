@@ -17,11 +17,6 @@
 
   {{ partial "footer.html" . }}
 
-  {{- if eq .Kind "page" | and (in .CurrentSection.Path "posts") -}}
-  {{ $externalJS := resources.Get "/assets/js/theme-toggle.js" |
-  resources.ExecuteAsTemplate "/assets/js/theme-toggle-gen.js" . }}
-  <script src="{{ $externalJS.RelPermalink }}"></script>
-  {{- else -}}
   {{ with resources.Get "/assets/js/site-theme-toggle.js" }}
   {{ if eq hugo.Environment "development" }}
   {{ with . | js.Build }}
@@ -34,8 +29,6 @@
   {{ end }}
   {{ end }}
   {{ end }}
-  {{- end -}}
-
 
 </body>
 
