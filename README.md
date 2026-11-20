@@ -11,7 +11,7 @@
 
 ## Quick Start
 
-Before start, make sure [Git](https://git-scm.com/) and [Hugo](https://gohugo.io/) are installed.
+Before start, make sure [Git](https://git-scm.com/), [Hugo](https://gohugo.io/) (`>= 0.158.0`), and [Dart Sass](https://sass-lang.com/dart-sass/) (`sass` in `PATH`) are installed.
 
 Create and enter `Website` folder and run the `git init` command:
 
@@ -115,7 +115,7 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
 [module]
     [module.hugoVersion]
         extended = true
-        min = "0.142.0"
+        min = "0.158.0"
 
 [markup]
     [markup.goldmark]

@@ -43,7 +43,7 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
 [module]
     [module.hugoVersion]
         extended = true
-        min = "0.142.0"
+        min = "0.158.0"
 
 [markup]
     [markup.goldmark]
