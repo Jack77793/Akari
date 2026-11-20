@@ -7,6 +7,7 @@
 - Full-text RSS feed
 - Responsive design
 - Rendering mathematical formulas with MathJax.js
+- Optional Google Analytics (GA4, production only)
 
 ## Quick Start
 
@@ -119,6 +120,14 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
 
 [outputs]
     home = ["HTML", "RSS", "JSON"]
+
+[services]
+    # [services.rss]
+    #     limit = 20
+    [services.googleAnalytics]
+        # Set your GA4 Measurement ID (e.g. "G-XXXXXXXXXX") to enable in production builds;
+        # leave empty to disable. Also respects Hugo's [privacy.googleAnalytics] settings.
+        ID = ""
 ```
 
 The Position of the logo,hero and favicon:

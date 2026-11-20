@@ -48,6 +48,9 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
 [outputs]
     home = ["HTML", "RSS", "JSON"]
 
-# [services]
-#     [services.rss]
-#         limit = 20
+[services]
+    # [services.rss]
+    #     limit = 20
+    [services.googleAnalytics]
+        # Set to your GA4 Measurement ID (e.g. "G-XXXXXXXXXX") to enable in production builds.
+        ID = ""
