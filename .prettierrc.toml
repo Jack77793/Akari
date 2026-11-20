@@ -1,0 +1,13 @@
+tabWidth = 2
+useTabs = false
+singleQuote = true
+semi = true
+endOfLine = "lf"
+
+# To format Hugo HTML templates, install prettier-plugin-go-template
+plugins = ["prettier-plugin-go-template"]
+
+[[overrides]]
+files = "layouts/**/*.html"
+[overrides.options]
+parser = "go-template"

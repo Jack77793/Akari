@@ -1,0 +1,24 @@
+[global]
+excludes = [
+  "COPYING",
+  "exampleSite/COPYING",
+  "exampleSite/public/**",
+  "exampleSite/resources/**",
+  "exampleSite/.hugo_build.lock",
+  "archetypes/**",
+  "layouts/_default/index.json",
+  "layouts/_default/rss.xml",
+  "assets/assets/fonts/**",
+  "assets/assets/imgs/**",
+  "static/**",
+]
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = ["*.js", "*.scss", "*.md", "layouts/**/*.html"]
+
+[formatter.taplo]
+command = "taplo"
+options = ["fmt"]
+includes = ["*.toml"]

@@ -1,0 +1,5 @@
+[formatting]
+indent_string = "  "
+crlf = false
+align_entries = false
+reorder_keys = false
