@@ -13,7 +13,7 @@
 # pagenotfound_desc = '无法找到您请求的页面'
 # return_home = '返回首页'
 # all_rights_reserved = '版权所有'
-# powered_by = '由 <a href="https://gohugo.io">Hugo</a> & <a href="https://github.com/khitezza/vortisil/">Vortisil</a> 提供支持'
+# powered_by = '由 <a href="https://gohugo.io">Hugo</a> & <a href="https://github.com/Jack77793/Akari/">Akari</a> 提供支持'
 # license = '本文采用 <a href="%s" target="_blank" rel="license noopener noreferrer">__license__</a> 许可'
 
 # Language: English (en, en_US)
@@ -31,5 +31,5 @@ pagenotfound_title = 'Page Not Found'
 pagenotfound_desc = 'The page you requested cannot be found'
 return_home = 'Return to the home page'
 all_rights_reserved = 'All rights reserved'
-powered_by = 'Powered by <a href="https://gohugo.io">Hugo</a> & <a href="https://github.com/khitezza/vortisil/">Vortisil</a>'
+powered_by = 'Powered by <a href="https://gohugo.io">Hugo</a> & <a href="https://github.com/Jack77793/Akari/">Akari</a>'
 license = 'This article is licensed under <a href="%s" target="_blank" rel="license noopener noreferrer">__license__</a>'

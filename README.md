@@ -1,4 +1,4 @@
-![Vortisil](https://raw.githubusercontent.com/khitezza/vortisil/trunk/images/banner.png)
+# Akari
 
 ## Features
 
@@ -13,8 +13,6 @@
 
 Before start, make sure [Git](https://git-scm.com/) and [Hugo](https://gohugo.io/) are installed.
 
-
-
 Create and enter `Website` folder and run the `git init` command:
 
 ```bash
@@ -26,7 +24,7 @@ git init
 Add theme by git submodule:
 
 ```bash
-git submodule add https://github.com/khitezza/vortisil themes/vortisil
+git submodule add https://github.com/Jack77793/Akari themes/akari
 ```
 
 And updated Theme:
@@ -76,7 +74,7 @@ baseURL = "https://example.com"
 languageCode = "en" # <html lang> ==> data/l10n.toml
 title = "Example Site" # Website Title
 copyright = "Name" # Footer copyright.
-theme = "vortisil"
+theme = "akari"
 pagination.pagerSize = 9
 hasCJKLanguage = true
 enableEmoji = true
@@ -159,11 +157,11 @@ Create `assets/assets/scss/custom.scss` and change the primary color:
 
 ```scss
 [data-theme="light"] {
-    --color-primary: #297d7a !important;
+  --color-primary: #297d7a !important;
 }
 
 [data-theme="dark"] {
-    --color-primary: #68bdae !important;
+  --color-primary: #68bdae !important;
 }
 ```
 
@@ -188,10 +186,12 @@ pagenotfound_title = 'Page Not Found'
 pagenotfound_desc = 'The page you requested cannot be found'
 return_home = 'Return to the home page'
 all_rights_reserved = 'All rights reserved'
-powered_by = 'Powered by <a href="https://gohugo.io">Hugo</a> & <a href="https://github.com/khitezza/vortisil/">Vortisil</a>'
+powered_by = 'Powered by <a href="https://gohugo.io">Hugo</a> & <a href="https://github.com/Jack77793/Akari/">Akari</a>'
 license = 'This article is licensed under <a href="%s" target="_blank" rel="license noopener noreferrer">__license__</a>'
 ```
 
 ## Copyright
 
-Licensed under [The GNU General Public License v3.0](LICENSE)
+Licensed under [The GNU General Public License v3.0](COPYING).
+
+Derived from [Vortisil](https://github.com/khitezza/vortisil) by Hao Wu.

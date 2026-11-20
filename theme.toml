@@ -1,13 +1,18 @@
-name = 'Vortisil'
+name = 'Akari'
 license = 'GPL-3.0-or-later'
-licenselink = 'https://github.com/khitezza/vortisil/LICENSE'
+licenselink = 'https://github.com/Jack77793/Akari/blob/master/COPYING'
 description = 'A fast, minimal and restrained Hugo theme...'
-homepage = 'https://github.com/khitezza/vortisil'
-demosite = "https://github.com/khitezza/vortisil"
+homepage = 'https://github.com/Jack77793/Akari/'
+demosite = 'https://github.com/Jack77793/Akari/'
 tags = ["blog", "responsive", "clean", "light", "dark", "personal"]
 features = ["blog", "darkmode", "responsive", "search", "rss"]
 min_version = "0.142.0"
 
 [author]
-name = 'Hao Wu'
+name = 'Jack77793'
+
+[original]
+name = 'Vortisil'
+author = 'Hao Wu'
 homepage = 'https://khitezza.com'
+repo = 'https://github.com/khitezza/vortisil'

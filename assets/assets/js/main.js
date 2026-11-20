@@ -1,4 +1,4 @@
-console.log('%cVortisil (https://github.com/khitezza/vortisil)', 'font-style: italic;');
+console.log('%cAkari (https://github.com/Jack77793/Akari/)', 'font-style: italic;');
 
 document.addEventListener('DOMContentLoaded', function () {
   const navbarBurger = document.getElementById('navbar-burger');
