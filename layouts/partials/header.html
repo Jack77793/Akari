@@ -23,14 +23,14 @@
                 {{ range .Site.Menus.main }}
                 {{- $label := "" -}}
                 {{- with .Identifier -}}
-                    {{- $label = index $.Site.Data.l10n . -}}
+                    {{- $label = index hugo.Data.l10n . -}}
                 {{- end -}}
                 {{- $label = $label | default .Name | default .Identifier -}}
                 <a href="{{ .URL }}" class="navbar-link-item">{{ $label }}</a>
                 {{ end }}
-                <a href="/search" class="navbar-link-item">{{ index $.Site.Data.l10n "search" }}</a>
+                <a href="/search" class="navbar-link-item">{{ index hugo.Data.l10n "search" }}</a>
                 {{ with site.Home.OutputFormats.Get "rss" }}
-                <a href="{{ .RelPermalink }}" class="navbar-link-item">{{ index $.Site.Data.l10n "rss" | default "RSS" }}</a>
+                <a href="{{ .RelPermalink }}" class="navbar-link-item">{{ index hugo.Data.l10n "rss" | default "RSS" }}</a>
                 {{ end }}
             </div>
             <div class="theme-toggle">

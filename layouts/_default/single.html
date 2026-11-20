@@ -10,14 +10,14 @@
 
 <div class="article-tag">
   {{ if eq .Section "posts" }}
-  <span class="article-author">{{ index $.Site.Data.l10n "by" }}&nbsp;{{ or .Params.author .Site.Params.author }}</span>
+  <span class="article-author">{{ index hugo.Data.l10n "by" }}&nbsp;{{ or .Params.author .Site.Params.author }}</span>
   {{ $datePostMachine := .Date | time.Format "2006-01-02T15:04:05" }}
   {{ $datePostHuman := .Date | time.Format "2006-01-02" }}
-  <time datetime="{{ $datePostMachine }}">{{ index $.Site.Data.l10n "posted_on" }} {{ $datePostHuman }}</time>
+  <time datetime="{{ $datePostMachine }}">{{ index hugo.Data.l10n "posted_on" }} {{ $datePostHuman }}</time>
   {{ with .Params.lastmodified }}
   {{ $dateLastmodMachine := . | time.Format "2006-01-02T15:04:05" }}
   {{ $dateLastmodHuman := . | time.Format "2006-01-02" }}
-  <time datetime="{{ $dateLastmodMachine }}">{{ index $.Site.Data.l10n "last_modified" }} {{ $dateLastmodHuman }}</time>
+  <time datetime="{{ $dateLastmodMachine }}">{{ index hugo.Data.l10n "last_modified" }} {{ $dateLastmodHuman }}</time>
   {{ end }}
   {{ else }}
   {{ end }}
@@ -27,7 +27,7 @@
 
 {{ with .Params.license }}
 <div class="article-license">
-  {{ $dynamicContent := safeHTML (printf (index $.Site.Data.l10n "license") $.Params.license_url) }}
+  {{ $dynamicContent := safeHTML (printf (index hugo.Data.l10n "license") $.Params.license_url) }}
   {{ $renderedContent := replace $dynamicContent "__license__" . }}
   <span>{{ $renderedContent | safeHTML }}.</span>
 </div>

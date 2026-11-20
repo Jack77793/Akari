@@ -13,15 +13,15 @@
 {{- else if eq .Kind "page" | and (in .CurrentSection.Path "posts") -}}
     {{- .Title }} @ {{ site.Title -}}
 {{- else if .IsSection | and (eq .Section "posts") -}}
-    {{- (index site.Data.l10n "archives") | default "Archives" }} @ {{ site.Title -}}
+    {{- (index hugo.Data.l10n "archives") | default "Archives" }} @ {{ site.Title -}}
 {{- else if eq .RelPermalink "/about/" -}}
-    {{- (index site.Data.l10n "about") | default "About" }} @ {{ site.Title -}}
+    {{- (index hugo.Data.l10n "about") | default "About" }} @ {{ site.Title -}}
 {{- else if eq .RelPermalink "/search/" -}}
-    {{- (index site.Data.l10n "search") | default "Search" }} @ {{ site.Title -}}
+    {{- (index hugo.Data.l10n "search") | default "Search" }} @ {{ site.Title -}}
 {{- else if in $whitelist .RelPermalink -}}
     {{- $slug := strings.Trim "/" .RelPermalink -}}
-    {{- $pageTitle := .Title | default (index site.Data.l10n $slug) | default (strings.Title $slug) -}}
+    {{- $pageTitle := .Title | default (index hugo.Data.l10n $slug) | default (strings.Title $slug) -}}
     {{- $pageTitle }} @ {{ site.Title -}}
 {{- else -}}
-    {{- (index site.Data.l10n "pagenotfound_title") | default "404" }} @ {{ site.Title -}}
+    {{- (index hugo.Data.l10n "pagenotfound_title") | default "404" }} @ {{ site.Title -}}
 {{- end -}}

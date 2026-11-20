@@ -4,7 +4,7 @@
   {{ $grouped := $pages.GroupByDate "2006" }}
   {{ $paginator := .Paginate $grouped }}
 
-  <h1>{{ index $.Site.Data.l10n "archives" }} ({{ len $pages }})</h1>
+  <h1>{{ index hugo.Data.l10n "archives" }} ({{ len $pages }})</h1>
 
   {{ range $paginator.PageGroups }}
   <h2>{{ .Key }}</h2>

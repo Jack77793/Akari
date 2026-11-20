@@ -10,7 +10,7 @@
 
 <section class="posts" id="posts">
 
-    <div class="section-title">{{ index $.Site.Data.l10n "posts" }}</div>
+    <div class="section-title">{{ index hugo.Data.l10n "posts" }}</div>
 
     <div class="posts-list">
         {{ $posts_pages := where site.RegularPages "Type" "posts" }}
