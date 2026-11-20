@@ -5,8 +5,12 @@
 <title>
   {{ partial "title" . }}
 </title>
-{{ $description := (.Content | plainify | truncate 80 "…") | safeHTML }}
-<meta name="description" content="{{ or $description .Site.Params.meta.description }}">
+{{- $description := .Description | strings.TrimSpace -}}
+{{- if not $description -}}
+  {{- $description = .Content | plainify | htmlUnescape | strings.TrimSpace | truncate 120 "…" -}}
+{{- end -}}
+{{- $description = $description | default .Site.Params.meta.description -}}
+<meta name="description" content="{{ $description }}">
 
 {{ hugo.Generator }}
 
@@ -21,7 +25,7 @@
 <meta property="og:locale" content="{{ site.Language.LanguageCode }}">
 <meta property="og:title" content='{{ partial "title" . }}'>
 <meta property="og:site_name" content="{{ site.Title }}">
-<meta property="og:description" content="{{ or $description .Site.Params.meta.description }}">
+<meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink  }}">
 {{ if .IsHome }}
 <meta property="og:image" content="/assets/imgs/hero.webp">
