@@ -1,0 +1,51 @@
+{{- $u := urls.Parse .Destination -}}
+{{- $src := .Destination | safeURL -}}
+{{- $width := 0 -}}
+{{- $height := 0 -}}
+
+{{- if not (or $u.IsAbs $u.Host) -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- $res := .PageInner.Resources.Get $path -}}
+  {{- if not $res -}}
+    {{- $res = resources.Get (strings.TrimPrefix "/" $path) -}}
+  {{- end -}}
+  {{- with $res -}}
+    {{- $src = .RelPermalink -}}
+    {{- if in (slice "jpeg" "png" "gif" "webp" "tiff" "bmp") .MediaType.SubType -}}
+      {{- $width = .Width -}}
+      {{- $height = .Height -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $alt := .PlainText | strings.TrimSpace -}}
+{{- $caption := (.Title | default .Text) | strings.TrimSpace -}}
+
+{{- if .IsBlock -}}
+  {{- $figClass := "article-figure" -}}
+  {{- with .Attributes.class -}}
+    {{- $figClass = printf "%s %s" $figClass . -}}
+  {{- end -}}
+<figure class="{{ $figClass }}"
+  {{- range $k, $v := .Attributes -}}
+    {{- if ne $k "class" -}}
+      {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}
+>
+  <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async"
+    {{- if and $width $height }} width="{{ $width }}" height="{{ $height }}"{{ end -}}
+  >
+  {{- with $caption }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>
+{{- else -}}
+<img src="{{ $src }}" alt="{{ $alt }}"
+  {{- with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async"
+  {{- if and $width $height }} width="{{ $width }}" height="{{ $height }}"{{ end -}}
+  {{- range $k, $v := .Attributes -}}
+    {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
+  {{- end -}}
+>
+{{- end -}}
