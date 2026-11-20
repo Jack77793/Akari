@@ -24,6 +24,9 @@
                 <a href="{{ .URL }}" class="navbar-link-item">{{ index $.Site.Data.l10n .Identifier }}</a>
                 {{ end }}
                 <a href="/search" class="navbar-link-item">{{ index $.Site.Data.l10n "search" }}</a>
+                {{ with site.Home.OutputFormats.Get "rss" }}
+                <a href="{{ .RelPermalink }}" class="navbar-link-item">{{ index $.Site.Data.l10n "rss" | default "RSS" }}</a>
+                {{ end }}
             </div>
             <div class="theme-toggle">
                 <div id="theme-toggle-btn">

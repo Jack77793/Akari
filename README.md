@@ -4,6 +4,7 @@
 
 - Light / Dark theme
 - All articles search
+- Full-text RSS feed
 - Responsive design
 - Rendering mathematical formulas with MathJax.js
 
@@ -117,7 +118,7 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
         guessSyntax = true
 
 [outputs]
-    home = ["HTML", "JSON"]
+    home = ["HTML", "RSS", "JSON"]
 ```
 
 The Position of the logo,hero and favicon:
@@ -155,6 +156,7 @@ home = 'Home'
 about = 'About'
 archives = 'Archives'
 search = 'Search'
+rss = 'RSS'
 blogs = 'Blogs'
 latest_posts = 'Latest Posts'
 works = 'Works'

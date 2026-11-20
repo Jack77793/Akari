@@ -1,0 +1,85 @@
+{{- $pctx := . -}}
+{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
+{{- $pages := slice -}}
+{{- if $.IsHome -}}
+  {{- $pages = where site.RegularPages "Type" "posts" -}}
+{{- else if or $.IsSection $.IsTaxonomy $.IsTerm -}}
+  {{- $pages = $pctx.RegularPages -}}
+{{- else -}}
+  {{- $pages = $pctx.Pages -}}
+{{- end -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 0 -}}
+  {{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- $base := strings.TrimSuffix "/" site.Home.Permalink -}}
+{{- $channelTitle := site.Title -}}
+{{- if and (not .IsHome) .Title (ne .Title site.Title) -}}
+  {{- $channelTitle = printf "%s on %s" .Title site.Title -}}
+{{- end -}}
+{{- $channelDesc := "" -}}
+{{- if .IsHome -}}
+  {{- $channelDesc = or site.Params.meta.description (printf "Recent content on %s" site.Title) -}}
+{{- else -}}
+  {{- $channelDesc = printf "Recent content in %s on %s" .Title site.Title -}}
+{{- end -}}
+{{- $lastBuild := .Date -}}
+{{- if and $lastBuild.IsZero (gt (len $pages) 0) -}}
+  {{- $lastBuild = (index $pages 0).Date -}}
+{{- end -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{{ $channelTitle }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ $channelDesc }}</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>{{ site.Language.LanguageCode | default site.Language.Lang }}</language>
+    {{- with site.Copyright }}
+    <copyright>{{ . }}</copyright>
+    {{- end }}
+    {{- if not $lastBuild.IsZero }}
+    <lastBuildDate>{{ $lastBuild.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- end }}
+    {{- with .OutputFormats.Get "RSS" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range $pages }}
+    {{- $page := . -}}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{- $author := or .Params.author site.Params.author -}}
+      {{- with $author }}
+      <dc:creator>{{ . }}</dc:creator>
+      {{- end }}
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
+      {{- $content := .Content -}}
+      {{- $content = $content | replaceRE `(src|href)="/([^/"][^"]*)"` (printf `$1="%s/$2"` $base) -}}
+      {{- $content = $content | replaceRE `(src|href)="/"` (printf `$1="%s/"` $base) -}}
+      {{- $content = $content | replaceRE `(src|href)="\./([^"]*)"` (printf `$1="%s$2"` $page.Permalink) -}}
+      {{- $coverHTML := "" -}}
+      {{- with .Params.cover -}}
+        {{- $coverURL := "" -}}
+        {{- if or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+          {{- $coverURL = . -}}
+        {{- else if hasPrefix . "/" -}}
+          {{- $coverURL = printf "%s%s" $base . -}}
+        {{- else -}}
+          {{- $cleanCover := strings.TrimPrefix "./" . -}}
+          {{- $res := $page.Resources.Get $cleanCover -}}
+          {{- if $res -}}
+            {{- $coverURL = $res.Permalink -}}
+          {{- else -}}
+            {{- $coverURL = printf "%s%s" $page.Permalink $cleanCover -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $coverHTML = printf `<p><img src="%s" alt="%s" /></p>` ($coverURL | htmlEscape) ($page.Title | htmlEscape) -}}
+      {{- end }}
+      <content:encoded>{{ printf "%s%s" $coverHTML $content | transform.XMLEscape | safeHTML }}</content:encoded>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

@@ -46,4 +46,8 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
         guessSyntax = true
 
 [outputs]
-    home = ["HTML", "JSON"]
+    home = ["HTML", "RSS", "JSON"]
+
+# [services]
+#     [services.rss]
+#         limit = 20

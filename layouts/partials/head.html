@@ -12,6 +12,10 @@
 
 <link rel="canonical" href="{{ .Permalink  }}">
 
+{{ with site.Home.OutputFormats.Get "rss" }}
+{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}
+
 <meta property="og:type" content="website">
 
 <meta property="og:locale" content="{{ site.Language.LanguageCode }}">
