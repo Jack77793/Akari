@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html data-theme="{{ or site.Params.colortheme `light` }}" lang="{{ site.Language.LanguageCode }}"
-  dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<html data-theme="{{ or site.Params.colortheme `light` }}" lang="{{ site.Language.Locale }}"
+  dir="{{ or site.Language.Direction `ltr` }}">
 
 <head>
   {{ partial "head.html" . }}

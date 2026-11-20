@@ -34,7 +34,7 @@
     <link>{{ .Permalink }}</link>
     <description>{{ $channelDesc }}</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>{{ site.Language.LanguageCode | default site.Language.Lang }}</language>
+    <language>{{ site.Language.Locale | default site.Language.Lang }}</language>
     {{- with site.Copyright }}
     <copyright>{{ . }}</copyright>
     {{- end }}

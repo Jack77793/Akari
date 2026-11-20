@@ -71,7 +71,7 @@ Site config `hugo.toml`:
 
 ```toml
 baseURL = "https://example.com"
-languageCode = "en" # <html lang> ==> data/l10n.toml
+locale = "en" # <html lang> ==> data/l10n.toml
 title = "Example Site" # Website Title
 copyright = "Name" # Footer copyright.
 theme = "akari"
