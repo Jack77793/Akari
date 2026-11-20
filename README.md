@@ -58,6 +58,7 @@ title = 'Example Post Title'    <!-- Automatic generation according to file name
 date = 2025-02-09T12:37:00+08:00    <!-- Auto get the date this article was created. -->
 lastmodified = ""    <!-- Please fill in the date yourself when editing this article. -->
 author = "Single Name or You, Name1, Name2"
+description = ""
 license = "CC BY-NC-SA 4.0"
 license_url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
 cover = ""    <!-- Cover image url. -->
@@ -106,12 +107,24 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
     url = "/posts"
     weight = 3
 
+# Custom menu items can set `name` directly without modifying data/l10n.toml:
+# [[menus.main]]
+#     identifier = "friendlink"
+#     name = "Friendlinks"
+#     url = "/friendlink"
+#     weight = 4
+
 [module]
     [module.hugoVersion]
         extended = true
-        min = "0.116.0"
+        min = "0.142.0"
 
 [markup]
+    [markup.goldmark]
+        [markup.goldmark.parser]
+            wrapStandAloneImageWithinParagraph = false
+            [markup.goldmark.parser.attribute]
+                block = true
     [markup.highlight]
         style = "evergarden"
         tabWidth = 4
@@ -168,7 +181,6 @@ search = 'Search'
 rss = 'RSS'
 blogs = 'Blogs'
 latest_posts = 'Latest Posts'
-works = 'Works'
 by = 'by'
 posted_on = 'Posted on'
 last_modified = 'Last modified'
@@ -178,15 +190,6 @@ return_home = 'Return to the home page'
 all_rights_reserved = 'All rights reserved'
 powered_by = 'Powered by <a href="https://gohugo.io">Hugo</a> & <a href="https://github.com/khitezza/vortisil/">Vortisil</a>'
 license = 'This article is licensed under <a href="%s" target="_blank" rel="license noopener noreferrer">__license__</a>'
-```
-
-Use `data/works.toml` to display works/projects on the homepage.
-
-```toml
-[[works]]
-  name = "Example Works" # Title of the work.
-  url = "https://github.com/your-name/repo-name" # Works website (Git repository or product site).
-  desc = "A fast, minimal, and restrained Hugo theme." # Description.
 ```
 
 ## Deployments

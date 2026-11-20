@@ -18,8 +18,7 @@ postsSearch = function () {
     const regex = new RegExp(query, 'gi');
 
     const results = indexData.filter(item => {
-        const isExcluded = item.permalink.includes('/about') || item.permalink.includes('/search');
-        return !isExcluded && (regex.test(item.title) || regex.test(item.content));
+        return regex.test(item.title) || regex.test(item.content);
     });
     
     results.forEach(item => {

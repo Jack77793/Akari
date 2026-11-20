@@ -33,12 +33,24 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
     url = "/posts"
     weight = 3
 
+# Custom menu items can set `name` directly without modifying data/l10n.toml:
+# [[menus.main]]
+#     identifier = "friendlink"
+#     name = "Friendlinks"
+#     url = "/friendlink"
+#     weight = 4
+
 [module]
     [module.hugoVersion]
         extended = true
-        min = "0.116.0"
+        min = "0.142.0"
 
 [markup]
+    [markup.goldmark]
+        [markup.goldmark.parser]
+            wrapStandAloneImageWithinParagraph = false
+            [markup.goldmark.parser.attribute]
+                block = true
     [markup.highlight]
         style = "monokai"
         tabWidth = 4
