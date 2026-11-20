@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
-@import 'base/variables';
-@import 'modules/header';
-@import 'modules/pagination';
-@import 'modules/footer';
-@import 'pages/article';
-@import 'pages/home';
-@import 'pages/search';
+@use 'base/variables' as *;
+@use 'modules/header';
+@use 'modules/pagination';
+@use 'modules/footer';
+@use 'pages/article';
+@use 'pages/home';
+@use 'pages/search';
 
 html {
     text-rendering: geometricPrecision;

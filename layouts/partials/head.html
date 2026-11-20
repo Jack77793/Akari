@@ -41,29 +41,18 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/imgs/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/imgs/apple-touch-icon.png">
 
-{{ with resources.Get "/assets/scss/custom.scss" }}
-{{ if eq hugo.Environment "development" }}
-{{ with . | toCSS | minify }}
-<link rel="stylesheet" href="{{ .RelPermalink }}">
-{{ end }}
-{{ else }}
-{{ with . | toCSS | minify | fingerprint }}
-<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-{{ end }}
-{{ end }}
-{{ end }}
-
-{{ with resources.Get "/assets/scss/main.scss" }}
-{{ if eq hugo.Environment "development" }}
-{{ with . | toCSS | minify }}
-<link rel="stylesheet" href="{{ .RelPermalink }}">
-{{ end }}
-{{ else }}
-{{ with . | toCSS | minify | fingerprint }}
-<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-{{ end }}
-{{ end }}
-{{ end }}
+{{- $sassOpts := dict "transpiler" "dartsass" "outputStyle" "compressed" -}}
+{{- range slice "/assets/scss/custom.scss" "/assets/scss/main.scss" -}}
+  {{- with resources.Get . -}}
+    {{- $css := . | css.Sass $sassOpts | minify -}}
+    {{- if eq hugo.Environment "development" -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{- else -}}
+      {{- $css = $css | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
 <script>
   (function () {
