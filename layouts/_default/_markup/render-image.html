@@ -26,26 +26,39 @@
   {{- with .Attributes.class -}}
     {{- $figClass = printf "%s %s" $figClass . -}}
   {{- end -}}
-<figure class="{{ $figClass }}"
-  {{- range $k, $v := .Attributes -}}
-    {{- if ne $k "class" -}}
+  <figure
+    class="{{ $figClass }}"
+    {{- range $k, $v := .Attributes -}}
+      {{- if ne $k "class" -}}
+        {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
+      {{- end -}}
+    {{- end -}}
+  >
+    <img
+      src="{{ $src }}"
+      alt="{{ $alt }}"
+      loading="lazy"
+      decoding="async"
+      {{- if and $width $height }}
+        width="{{ $width }}" height="{{ $height }}"
+      {{ end -}}
+    />
+    {{- with $caption }}
+      <figcaption>{{ . }}</figcaption>
+    {{- end }}
+  </figure>
+{{- else -}}
+  <img
+    src="{{ $src }}"
+    alt="{{ $alt }}"
+    {{- with .Title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async"
+    {{- if and $width $height }}
+      width="{{ $width }}" height="{{ $height }}"
+    {{ end -}}
+    {{- range $k, $v := .Attributes -}}
       {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
     {{- end -}}
-  {{- end -}}
->
-  <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async"
-    {{- if and $width $height }} width="{{ $width }}" height="{{ $height }}"{{ end -}}
-  >
-  {{- with $caption }}
-  <figcaption>{{ . }}</figcaption>
-  {{- end }}
-</figure>
-{{- else -}}
-<img src="{{ $src }}" alt="{{ $alt }}"
-  {{- with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async"
-  {{- if and $width $height }} width="{{ $width }}" height="{{ $height }}"{{ end -}}
-  {{- range $k, $v := .Attributes -}}
-    {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
-  {{- end -}}
->
+  />
 {{- end -}}

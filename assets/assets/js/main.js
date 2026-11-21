@@ -1,4 +1,7 @@
-console.log('%cAkari (https://github.com/Jack77793/Akari/)', 'font-style: italic;');
+console.log(
+  '%cAkari (https://github.com/Jack77793/Akari/)',
+  'font-style: italic;',
+);
 
 document.addEventListener('DOMContentLoaded', function () {
   const navbarBurger = document.getElementById('navbar-burger');
@@ -28,11 +31,10 @@ scrollToTop = function () {
   }
 
   requestAnimationFrame(scroll);
-}
+};
 
 document.addEventListener('DOMContentLoaded', function () {
-
-  document.querySelectorAll('div.code-wrapper').forEach(container => {
+  document.querySelectorAll('div.code-wrapper').forEach((container) => {
     const btn = document.createElement('button');
     btn.className = 'copy-code-btn';
     btn.textContent = 'Copy';
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => btn.classList.remove('copied'), 2000);
       } catch (err) {
         btn.textContent = 'Failed';
-        setTimeout(() => btn.textContent = 'Copy', 2000);
+        setTimeout(() => (btn.textContent = 'Copy'), 2000);
       }
     });
   });

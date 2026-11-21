@@ -13,22 +13,28 @@ draft = false
 
 This is an example article showcasing mathematical formulas, including inline formulas and standalone formula blocks.
 
-Since Markdown uses escape characters like ```\```, which can cause conflicts and lead to rendering errors in formulas, we replace ```\\(...\\)``` with ```$...$```, ```\\[...\\]``` with ```$$...$$```, and manually change the matrix line break symbol from ```\\``` to ```\\\\```.
+Since Markdown uses escape characters like `\`, which can cause conflicts and lead to rendering errors in formulas, we replace `\\(...\\)` with `$...$`, `\\[...\\]` with `$$...$$`, and manually change the matrix line break symbol from `\\` to `\\\\`.
 
 Here are some configurations for MathJax.js:
 
 ```javascript
 MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    inlineMath: [
+      ['$', '$'],
+      ['\\(', '\\)'],
+    ],
+    displayMath: [
+      ['$$', '$$'],
+      ['\\[', '\\]'],
+    ],
   },
   svg: {
-    fontCache: 'global'
+    fontCache: 'global',
   },
   options: {
-    enableMenu: false
-  }
+    enableMenu: false,
+  },
 };
 ```
 

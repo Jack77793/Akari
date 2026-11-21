@@ -18,23 +18,30 @@ This is a Markdown example demonstrating common syntax and features.
 ### Headings and Paragraphs
 
 # Heading Level 1
+
 ## Heading Level 2
+
 ### Heading Level 3
+
 #### Heading Level 4
+
 ##### Heading Level 5
+
 ###### Heading Level 6
 
-Paragraphs are separated by blank lines. This is the first paragraph, containing **bold text** and *italic text*, as well as inline code `fn main()`.
+Paragraphs are separated by blank lines. This is the first paragraph, containing **bold text** and _italic text_, as well as inline code `fn main()`.
 
 ### Lists
 
 Ordered List:
+
 1. First item
 2. Second item
    - Nested unordered list
    - [x] Nested task list
 
 Unordered List:
+
 - Item A
 - Item B
   - Sub-item
@@ -44,7 +51,7 @@ Unordered List:
 External Link: [Hugo Official Website](https://gohugo.io)
 
 Image Syntax:  
-![Alt Text](/assets/imgs/logo.png "Title Text")
+![Alt Text](/assets/imgs/logo.png 'Title Text')
 
 ## Advanced Elements
 
@@ -69,8 +76,8 @@ fn main() {
 
 ### Tables
 
-| Left Align | Center Align | Right Align |
-| :--------- | :----------: | ----------: |
+| Left Align   | Center Align |  Right Align |
+| :----------- | :----------: | -----------: |
 | Row 1 Data 1 | Row 1 Data 2 | Row 1 Data 3 |
 | Row 2 Data 1 | Row 2 Data 2 | Row 2 Data 3 |
 

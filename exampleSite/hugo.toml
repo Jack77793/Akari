@@ -1,37 +1,37 @@
 baseURL = "https://example.com"
-locale = "en" # <html lang> ==> data/l10n.toml
-title = "Example Site" # Website Title
-copyright = "Name" # Footer copyright.
+locale = "en"                       # <html lang> ==> data/l10n.toml
+title = "Example Site"              # Website Title
+copyright = "Name"                  # Footer copyright.
 theme = "akari"
 pagination.pagerSize = 9
 hasCJKLanguage = true
 enableEmoji = true
-disableKinds = ["taxonomy","term"] # DO NOT MODIFY
+disableKinds = ["taxonomy", "term"] # DO NOT MODIFY
 
 [params]
-    author = "Name" # Author name of the article.
-    logoImg = true # If false, the site title will display.
-    logoInvert = true # If the image logo needs to be turned on Image Colour Inversion.
-    math = true
+author = "Name"   # Author name of the article.
+logoImg = true    # If false, the site title will display.
+logoInvert = true # If the image logo needs to be turned on Image Colour Inversion.
+math = true
 
 [params.meta]
-    description = "A fast, minimal and restrained Hugo theme." # Site description
+description = "A fast, minimal and restrained Hugo theme." # Site description
 
 
 [[menus.main]]
-    identifier = "home"
-    url = "/"
-    weight = 1
+identifier = "home"
+url = "/"
+weight = 1
 
 [[menus.main]]
-    identifier = "about"
-    url = "/about"
-    weight = 2
+identifier = "about"
+url = "/about"
+weight = 2
 
 [[menus.main]]
-    identifier = "archives"
-    url = "/posts"
-    weight = 3
+identifier = "archives"
+url = "/posts"
+weight = 3
 
 # Custom menu items can set `name` directly without modifying data/l10n.toml:
 # [[menus.main]]
@@ -41,28 +41,28 @@ disableKinds = ["taxonomy","term"] # DO NOT MODIFY
 #     weight = 4
 
 [module]
-    [module.hugoVersion]
-        extended = true
-        min = "0.158.0"
+[module.hugoVersion]
+extended = true
+min = "0.158.0"
 
 [markup]
-    [markup.goldmark]
-        [markup.goldmark.parser]
-            wrapStandAloneImageWithinParagraph = false
-            [markup.goldmark.parser.attribute]
-                block = true
-    [markup.highlight]
-        style = "monokai"
-        tabWidth = 4
-        codeFences = true
-        guessSyntax = true
+[markup.goldmark]
+[markup.goldmark.parser]
+wrapStandAloneImageWithinParagraph = false
+[markup.goldmark.parser.attribute]
+block = true
+[markup.highlight]
+style = "monokai"
+tabWidth = 4
+codeFences = true
+guessSyntax = true
 
 [outputs]
-    home = ["HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON"]
 
 [services]
-    # [services.rss]
-    #     limit = 20
-    [services.googleAnalytics]
-        # Set to your GA4 Measurement ID (e.g. "G-XXXXXXXXXX") to enable in production builds.
-        ID = ""
+# [services.rss]
+#     limit = 20
+[services.googleAnalytics]
+# Set to your GA4 Measurement ID (e.g. "G-XXXXXXXXXX") to enable in production builds.
+ID = ""

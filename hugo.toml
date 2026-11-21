@@ -1,6 +1,6 @@
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.parser]
-      wrapStandAloneImageWithinParagraph = false
-      [markup.goldmark.parser.attribute]
-        block = true
+[markup.goldmark]
+[markup.goldmark.parser]
+wrapStandAloneImageWithinParagraph = false
+[markup.goldmark.parser.attribute]
+block = true

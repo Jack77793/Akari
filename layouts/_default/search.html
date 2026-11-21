@@ -1,5 +1,10 @@
 {{ define "main" }}
-<h1>{{ index hugo.Data.l10n "search" }}</h1>
-<input type="text" id="search-input" placeholder="$ grep..." oninput="postsSearch()">
-<div id="search-results"></div>
+  <h1>{{ index hugo.Data.l10n "search" }}</h1>
+  <input
+    type="text"
+    id="search-input"
+    placeholder="$ grep..."
+    oninput="postsSearch()"
+  />
+  <div id="search-results"></div>
 {{ end }}

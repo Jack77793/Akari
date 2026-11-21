@@ -1,4 +1,7 @@
 <footer class="footer">
-    <span>&copy; {{ now.Year }} {{ site.Copyright}}. {{ index hugo.Data.l10n "all_rights_reserved" }}.</span>
-    <span>{{ index hugo.Data.l10n "powered_by" | safeHTML }}.</span>
+  <span
+    >&copy; {{ now.Year }} {{ site.Copyright }}.
+    {{ index hugo.Data.l10n "all_rights_reserved" }}.</span
+  >
+  <span>{{ index hugo.Data.l10n "powered_by" | safeHTML }}.</span>
 </footer>

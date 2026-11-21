@@ -156,11 +156,11 @@ static/assets/imgs/apple-touch-icon.png
 Create `assets/assets/scss/custom.scss` and change the primary color:
 
 ```scss
-[data-theme="light"] {
+[data-theme='light'] {
   --color-primary: #297d7a !important;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-primary: #68bdae !important;
 }
 ```

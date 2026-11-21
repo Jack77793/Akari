@@ -1,27 +1,33 @@
 {{- $whitelist := slice "/friendlink/" "/license/" -}}
 {{- with site.Params.titleWhitelist -}}
-    {{- range . -}}
-        {{- $trimmed := strings.Trim "/" . -}}
-        {{- if $trimmed -}}
-            {{- $whitelist = $whitelist | append (printf "/%s/" $trimmed) -}}
-        {{- end -}}
+  {{- range . -}}
+    {{- $trimmed := strings.Trim "/" . -}}
+    {{- if $trimmed -}}
+      {{- $whitelist = $whitelist | append (printf "/%s/" $trimmed) -}}
     {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 {{- if .IsHome -}}
-    {{- site.Title -}}
+  {{- site.Title -}}
 {{- else if eq .Kind "page" | and (in .CurrentSection.Path "posts") -}}
-    {{- .Title }} @ {{ site.Title -}}
+  {{- .Title }} @
+  {{ site.Title -}}
 {{- else if .IsSection | and (eq .Section "posts") -}}
-    {{- (index hugo.Data.l10n "archives") | default "Archives" }} @ {{ site.Title -}}
+  {{- (index hugo.Data.l10n "archives") | default "Archives" }} @
+  {{ site.Title -}}
 {{- else if eq .RelPermalink "/about/" -}}
-    {{- (index hugo.Data.l10n "about") | default "About" }} @ {{ site.Title -}}
+  {{- (index hugo.Data.l10n "about") | default "About" }} @
+  {{ site.Title -}}
 {{- else if eq .RelPermalink "/search/" -}}
-    {{- (index hugo.Data.l10n "search") | default "Search" }} @ {{ site.Title -}}
+  {{- (index hugo.Data.l10n "search") | default "Search" }} @
+  {{ site.Title -}}
 {{- else if in $whitelist .RelPermalink -}}
-    {{- $slug := strings.Trim "/" .RelPermalink -}}
-    {{- $pageTitle := .Title | default (index hugo.Data.l10n $slug) | default (strings.Title $slug) -}}
-    {{- $pageTitle }} @ {{ site.Title -}}
+  {{- $slug := strings.Trim "/" .RelPermalink -}}
+  {{- $pageTitle := .Title | default (index hugo.Data.l10n $slug) | default (strings.Title $slug) -}}
+  {{- $pageTitle }} @
+  {{ site.Title -}}
 {{- else -}}
-    {{- (index hugo.Data.l10n "pagenotfound_title") | default "404" }} @ {{ site.Title -}}
+  {{- (index hugo.Data.l10n "pagenotfound_title") | default "404" }} @
+  {{ site.Title -}}
 {{- end -}}
